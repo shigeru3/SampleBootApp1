@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 public class SampleBootApp1Application {
 
-	String[][] data = {
-			{"noname", "no email address", "0"},
-			{"taro", "taro@yamada", "39"},
-			{"jiro", "joro@tanaka", "28"},
-			{"saburo", "saburo@sato", "17"},
-			{"shiro", "shiro@suzuki", "6"}
+	DataObject[] data = {
+			new DataObject("noname", "no email address", 0),
+			new DataObject("taro", "taro@yamada", 39),
+			new DataObject("jiro", "joro@tanaka", 28),
+			new DataObject("saburo", "saburo@sato", 17),
+			new DataObject("shiro", "shiro@suzuki", 6)
 	};
 
 	public static void main(String[] args) {
@@ -23,10 +23,45 @@ public class SampleBootApp1Application {
 	}
 
 	@RequestMapping("/{num}")
-	public String index(@PathVariable int num) {
+	public DataObject index(@PathVariable int num) {
 		int n = num < 0 ? 0 : num >= data.length ? 0 : num;
-		String[] item = data[n];
-		String msg = "ID=%s. {name: %s, mail: %s, age: %s}";
-		return String.format(msg, num, item[0], item[1], item[2]);
+		return data[n];
+	}
+}
+
+class DataObject {
+	private String name;
+	private String mail;
+	private int age;
+
+	public DataObject(String name, String mail, int age) {
+		super();
+		this.name = name;
+		this.mail = mail;
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 }
