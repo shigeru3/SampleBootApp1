@@ -1,14 +1,12 @@
 package com.example.sample1app;
 
 import org.springframework.boot.Banner.Mode;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
-@RestController
-public class SampleBootApp1Application {
+public class SampleBootApp1Application implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(SampleBootApp1Application.class);
@@ -16,8 +14,11 @@ public class SampleBootApp1Application {
 		app.run(args);
 	}
 
-	@RequestMapping("/")
-	public String index() {
-		return "Hello, Spring Boot 3!!!";
+	@Override
+	public void run(String[] args) {
+		System.out.println("+-------------------------------------+");
+		System.out.println("| this is CommandLine Runner program. |");
+		System.out.println("+-------------------------------------+");
+		System.out.println("[" + String.join(", ", args) + "]");
 	}
 }
