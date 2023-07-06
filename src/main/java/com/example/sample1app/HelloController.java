@@ -7,19 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-	@RequestMapping("/")
-	public String index(Model model) {
-		model.addAttribute("msg", "This is message for index page");
-		return "index";
-	}
-
-	@RequestMapping("/{temp}")
-	public String index(@PathVariable String temp) {
-		switch (temp) {
-			case "index":
-				return "index";
-			default:
-				return "other";
+	@RequestMapping("/{num}")
+	public String index(@PathVariable int num,  Model model) {
+		int res = 0;
+		for (int i = 1; i <= num; i++) {
+			res += i;
 		}
+		model.addAttribute("msg", "Total: " + res);
+		return "index";
 	}
 }
