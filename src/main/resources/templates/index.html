@@ -7,37 +7,8 @@
 </head>
 <body class="container">
 	<h1 class="display-4 mb-4">Hello page</h1>
-	<p th:text="${msg}"></p>
-	<div class="h6 alert alert-primary">
-		<form method="post" action=".">
-			<div class="my-2">
-				<input type="checkbox" class="form-check-input" name="check1" id="check1" />
-				<label class="frm-check-label" for="check1">check</label>
-			</div>
-			<div class="my-2">
-				<input class="form-check-input" type="radio" name="radio1" id="radio1" value="male" />
-				<label class="frm-check-label" for="radio1">Male</label>
-			</div>
-			<div class="my-2">
-				<input class="form-check-input" type="radio" name="radio1" id="radio2" value="female" />
-				<label class="frm-check-label" for="radio2">Female</label>
-			</div>
-			<div class="my-2">
-				<select class="form-select" name="select1" size="1">
-					<option value="Windows">Windows</option>
-					<option value="BSD">BSD</option>
-					<option value="Unix">Unix</option>
-				</select>
-			</div>
-			<div class="my-2">
-				<select class="form-select" name="select2" size="4" multiple="multiple">
-					<option value="Android">Android</option>
-					<option value="iOS">iOS</option>
-					<option value="FireOS">FireOS</option>
-				</select>
-			</div>
-			<input class="btn btn-primary" type="submit" value="click" />
-		</form>
+	<div class="alert alert-primary">
+		<p th:text="${msg}"></p>
 	</div>
 </body>
 </html>
