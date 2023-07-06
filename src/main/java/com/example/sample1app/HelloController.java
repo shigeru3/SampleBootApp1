@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-	private boolean flag = false;
-
 	@RequestMapping(value = "/")
 	public ModelAndView index(ModelAndView mav) {
-		flag = !flag;
-		mav.addObject("msg", "HelloController.index()");
-		mav.addObject("flag", flag);
+		mav.addObject("msg", "display data");
+		String[] data = new String[] {"One", "Two", "Three"};
+		mav.addObject("data", data);
 		mav.setViewName("index");
 		return mav;
 	}
