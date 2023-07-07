@@ -8,6 +8,13 @@ html(lang:'en') {
 	}
 	body(class:"container") {
 		h1(class:"display-4", title)
-		p(msg)
+		p("Flag: $flag")
+		if (flag) {
+			div(class:"alert alert-primary") {
+				h6(msg)
+			}
+		} else {
+			p("no message")
+		}
 	}
 }
