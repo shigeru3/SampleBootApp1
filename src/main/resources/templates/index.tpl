@@ -8,13 +8,11 @@ html(lang:'en') {
 	}
 	body(class:"container") {
 		h1(class:"display-4", title)
-		p("Flag: $flag")
-		if (flag) {
-			div(class:"alert alert-primary") {
-				h6(msg)
+		p(msg)
+		ul(class:"list-group") {
+			data.each {
+				li(class:"list-group-item", it)
 			}
-		} else {
-			p("no message")
 		}
 	}
 }
