@@ -7,21 +7,6 @@
 </head>
 <body class="container">
 	<h1 class="display-4 mb-4">Hello page</h1>
-	<p th:text="${msg}"></p>
-	<div th:switch="${month}">
-		<p class="alert alert-primary" th:case="1" th:text="'month ' + ${month} + ' is January'"></p>
-		<p class="alert alert-primary" th:case="2" th:text="'month ' + ${month} + ' is winter'"></p>
-		<p class="alert alert-primary" th:case="3" th:text="'month ' + ${month} + ' is spring'"></p>
-		<p class="alert alert-primary" th:case="4" th:text="'month ' + ${month} + ' is spring'"></p>
-		<p class="alert alert-primary" th:case="5" th:text="'month ' + ${month} + ' is spring'"></p>
-		<p class="alert alert-primary" th:case="6" th:text="'month ' + ${month} + ' is summer'"></p>
-		<p class="alert alert-primary" th:case="7" th:text="'month ' + ${month} + ' is summer'"></p>
-		<p class="alert alert-primary" th:case="8" th:text="'month ' + ${month} + ' is summer vacation'"></p>
-		<p class="alert alert-primary" th:case="9" th:text="'month ' + ${month} + ' is autumn'"></p>
-		<p class="alert alert-primary" th:case="10" th:text="'month ' + ${month} + ' is autumn'"></p>
-		<p class="alert alert-primary" th:case="11" th:text="'month ' + ${month} + ' is autumn'"></p>
-		<p class="alert alert-primary" th:case="12" th:text="'month ' + ${month} + ' is Christmas'"></p>
-		<p class="alert alert-primary" th:case="*" th:text="'month ' + ${month} + ' is unknown'"></p>
-	</div>
+	<p>{{msg}}</p>
 </body>
 </html>
