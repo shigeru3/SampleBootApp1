@@ -11,7 +11,7 @@ html(lang:'en') {
 		p(msg)
 		ul(class:"list-group") {
 			data.each {
-				li(class:"list-group-item", it)
+				fragment "li(class:'list-group-item', item)", item:it
 			}
 		}
 	}
