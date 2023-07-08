@@ -9,10 +9,6 @@ html(lang:'en') {
 	body(class:"container") {
 		h1(class:"display-4", title)
 		p(msg)
-		ul(class:"list-group") {
-			data.each {
-				fragment "li(class:'list-group-item', item)", item:it
-			}
-		}
+		include template:"content.tpl"
 	}
 }
