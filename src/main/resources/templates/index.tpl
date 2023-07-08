@@ -1,14 +1,9 @@
-yieldUnescaped '<!Doctype html>'
-
-html(lang:'en') {
-	head {
-		meta(charset:"UTF-8")
-		title(title)
-		link(rel:"stylesheet", type:"text/css", href:"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css")
-	}
-	body(class:"container") {
-		h1(class:"display-4", title)
-		p(msg)
-		include template:"content.tpl"
-	}
-}
+layout 'layout.tpl',
+		title: title,
+		bodyContents: contents {
+			p(msg)
+			div(class:"alert alert-primary") {
+				h6("alert")
+				p("Message: $msg")
+			}
+		}

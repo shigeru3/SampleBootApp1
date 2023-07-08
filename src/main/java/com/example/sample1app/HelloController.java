@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
 	@RequestMapping(value = "/")
 	public ModelAndView index(ModelAndView mav) {
-		String[] data = {"Windows", "macOS", "Linux", "ChromeOS"};
 		mav.addObject("title", "Groovy templates");
-		mav.addObject("msg", "This is sample message");
-		mav.addObject("data", data);
+		mav.addObject("msg", "This is sample layout");
 		mav.setViewName("index");
 		return mav;
 	}
