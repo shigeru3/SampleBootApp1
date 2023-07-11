@@ -6,6 +6,8 @@ import java.util.Optional;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,10 +36,22 @@ public class HelloController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@Transactional
 	public ModelAndView form(
-			@ModelAttribute("formModel") Person Person,
+			@ModelAttribute("formModel") @Validated Person Person,
+			BindingResult result,
 			ModelAndView mav) {
-		repository.saveAndFlush(Person);
-		return new ModelAndView("redirect:/");
+		ModelAndView res = null;
+		System.out.println(result.getFieldError());
+		if (!result.hasErrors()) {
+			repository.saveAndFlush(Person);
+			res = new ModelAndView("redirect:/");
+		} else {
+			mav.addObject("msg", "sorry, error is occurred.");
+			Iterable<Person> list = repository.findAll();
+			mav.addObject("data", list);
+			mav.setViewName("index");
+			res = mav;
+		}
+		return res;
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
