@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ public class HelloController {
 
 	@Autowired
 	PersonRepository repository;
+
+	@Autowired
+	PersonDAOPersonImpl dao;
 
 	@RequestMapping(value = "/")
 	public ModelAndView index(
@@ -93,6 +98,34 @@ public class HelloController {
 			ModelAndView mav) {
 		repository.deleteById(id);
 		return new ModelAndView("redirect:/");
+	}
+
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	public ModelAndView index(ModelAndView mav) {
+		mav.addObject("title", "Find person");
+		mav.addObject("msg", "Sample person");
+		Iterable<Person> list = dao.getAll();
+		mav.addObject("data", list);
+		mav.setViewName("find");
+		return mav;
+	}
+
+	@RequestMapping(value = "/find", method = RequestMethod.POST)
+	public ModelAndView search(
+			HttpServletRequest request,
+			ModelAndView mav) {
+		String param = request.getParameter("find_str");
+		if (param == "") {
+			mav = new ModelAndView("redirect:/find");
+		} else {
+			mav.addObject("title", "Find result");
+			mav.addObject("msg", "[" + param + "] search result");
+			mav.addObject("value", param);
+			List<Person> list = dao.findByName(param);
+			mav.addObject("data", list);
+		}
+		mav.setViewName("find");
+		return mav;
 	}
 
 	@PostConstruct
