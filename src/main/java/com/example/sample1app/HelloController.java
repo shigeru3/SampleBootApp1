@@ -1,5 +1,6 @@
 package com.example.sample1app;
 
+import java.sql.PseudoColumnUsage;
 import java.util.List;
 import java.util.Optional;
 
@@ -125,6 +126,16 @@ public class HelloController {
 			List<Person> list = dao.find(param);
 			mav.addObject("data", list);
 		}
+		mav.setViewName("find");
+		return mav;
+	}
+
+	@RequestMapping(value = "/page/{page}", method = RequestMethod.GET)
+	public ModelAndView index(ModelAndView mav, @PathVariable int page) {
+		mav.addObject("msg", "Person paging sample");
+		int num = 2;
+		Iterable<Person> list = dao.getPage(page, num);
+		mav.addObject("data", list);
 		mav.setViewName("find");
 		return mav;
 	}
