@@ -6,12 +6,16 @@ import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="people")
-@NamedQueries(
+@NamedQueries({
 		@NamedQuery(
-				name="findWithName",
-				query="from Person where name like :fname"
+				name = "findWithName",
+				query = "from Person where name like :fname"
+		),
+		@NamedQuery(
+				name = "findByAge",
+				query = "from Person where age >= :min and age < :max"
 		)
-)
+})
 public class Person {
 
 	@Id
