@@ -121,7 +121,7 @@ public class HelloController {
 			mav.addObject("title", "Find result");
 			mav.addObject("msg", "[" + param + "] search result");
 			mav.addObject("value", param);
-			List<Person> list = dao.findByName(param);
+			List<Person> list = dao.find(param);
 			mav.addObject("data", list);
 		}
 		mav.setViewName("find");
