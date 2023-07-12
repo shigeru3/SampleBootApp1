@@ -32,7 +32,7 @@ public class HelloController {
 			ModelAndView mav) {
 		mav.addObject("title", "Hello page");
 		mav.addObject("msg", "This is JPA sample data");
-		List<Person> list = repository.findAllOderByName();
+		List<Person> list = dao.getAll();
 		mav.addObject("data", list);
 		mav.setViewName("index");
 		return mav;
@@ -122,10 +122,7 @@ public class HelloController {
 			mav.addObject("msg", "[" + param + "] search result");
 			mav.addObject("value", param);
 			String[] params = param.split(",");
-			List<Person> list = repository.findByAge(
-					Integer.parseInt(params[0]),
-					Integer.parseInt(params[1])
-			);
+			List<Person> list = dao.find(param);
 			mav.addObject("data", list);
 		}
 		mav.setViewName("find");
