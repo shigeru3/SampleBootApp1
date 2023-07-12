@@ -2,7 +2,6 @@ package com.example.sample1app;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -27,7 +26,7 @@ public class PersonDAOPersonImpl implements PersonDAO {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Person> query = builder.createQuery(Person.class);
 		Root<Person> root = query.from(Person.class);
-		query.select(root);
+		query.select(root).orderBy(builder.asc(root.get("name")));
 		list = (List<Person>)entityManager.createQuery(query).getResultList();
 		return list;
 	}
