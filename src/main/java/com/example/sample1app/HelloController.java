@@ -122,7 +122,7 @@ public class HelloController {
 			mav.addObject("msg", "[" + param + "] search result");
 			mav.addObject("value", param);
 			String[] params = param.split(",");
-			List<Person> list = dao.findByAge(
+			List<Person> list = repository.findByAge(
 					Integer.parseInt(params[0]),
 					Integer.parseInt(params[1])
 			);
