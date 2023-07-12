@@ -32,7 +32,7 @@ public class HelloController {
 			ModelAndView mav) {
 		mav.addObject("title", "Hello page");
 		mav.addObject("msg", "This is JPA sample data");
-		List<Person> list = repository.findAll();
+		List<Person> list = repository.findAllOderByName();
 		mav.addObject("data", list);
 		mav.setViewName("index");
 		return mav;
