@@ -3,6 +3,8 @@ package com.example.sample1app;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name="people")
@@ -39,6 +41,10 @@ public class Person {
 
 	@Column(nullable = true)
 	private String memo;
+
+	@OneToMany(mappedBy = "Person")
+	@Column(nullable = true)
+	private List<Message> messages;
 
 
 	public long getId() {
@@ -79,5 +85,13 @@ public class Person {
 
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 }

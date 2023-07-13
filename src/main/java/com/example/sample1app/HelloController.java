@@ -1,12 +1,10 @@
 package com.example.sample1app;
 
-import java.sql.PseudoColumnUsage;
 import java.util.List;
 import java.util.Optional;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
