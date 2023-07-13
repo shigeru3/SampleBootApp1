@@ -40,6 +40,7 @@
 				<th>Name</th>
 				<th>Mail</th>
 				<th>Age</th>
+				<th>Message</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -48,6 +49,11 @@
 				<td th:text="${item.name}"></td>
 				<td th:text="${item.mail}"></td>
 				<td th:text="${item.age}"></td>
+				<td>
+					<ul th:each="msg : ${item.messages}">
+						<li th:text="${msg.content}"></li>
+					</ul>
+				</td>
 			</tr>
 		</tbody>
 	</table>
