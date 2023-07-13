@@ -20,6 +20,9 @@ public class MessageController {
 	@Autowired
 	MessageRepository repository;
 
+	@Autowired
+	PersonDAOMessageImpl dao;
+
 	@PersistenceContext
 	EntityManager entityManager;
 
@@ -30,7 +33,7 @@ public class MessageController {
 		mav.addObject("title", "Message");
 		mav.addObject("msg", "message sample");
 		mav.addObject("formModel", message);
-		List<Message> list = (List<Message>)repository.findAll();
+		List<Message> list = (List<Message>)dao.getAll();
 		mav.addObject("data", list);
 		mav.setViewName("messages/index");
 		return mav;
